@@ -160,8 +160,7 @@ def build(player, y, x, kind, token):
     assert (kind in price)
     assert (mapdata[y][x][opponent[player]]['B'] == 0)
     assert (mapdata[y][x][player][requires[kind]] > 0)
-    assert (nbMoves[(y, x, player, requires[kind])]
-            < mapdata[y][x][player][requires[kind]])
+    assert (nbMoves[(y, x, player, requires[kind])] < mapdata[y][x][player][requires[kind]])
     assert (gold[player] >= price[kind])
     nbMoves[(y, x, player, requires[kind])] += 1
     nbMoves[(y, x, player, kind)] += 1
@@ -265,7 +264,7 @@ def changeturn(player, token):
 def log():
     if len(sys.argv) > 2:
         if winner:
-            s = f"{nbRounds},{score}\nWINNER = {winner}"
+            s = f"{nbRounds},{score}\nWINNER = {winner}\nNotes = '{sys.argv[3]}'\n"
             with open(sys.argv[2], 'a') as f:
                 f.write(s)
             print(s)
